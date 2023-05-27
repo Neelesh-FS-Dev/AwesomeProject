@@ -1,18 +1,20 @@
 import {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, Alert, Button} from 'react-native';
+import {View, Text, StyleSheet, Alert, Button, TextInput} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {TextInput} from 'react-native-gesture-handler';
 
 export default function Home({navigation}) {
   const [name, setName] = useState('');
+  const [age, setAge] = useState('');
   useEffect(() => {
     getData();
   }, []);
   const getData = () => {
     try {
-      AsyncStorage.getItem('UserName').then(value => {
+      AsyncStorage.getItem('UserData').then(value => {
         if (value != null) {
-          setName(value);
+          let user = JSON.parse(value);
+          setName(user.Name);
+          setAge(user.Age);
         }
       });
     } catch (error) {
@@ -26,8 +28,12 @@ export default function Home({navigation}) {
       Alert.alert('warning!', 'Please enter your data');
     } else {
       try {
-        await AsyncStorage.setItem('UserName', name);
+        var user = {
+          Name: name,
+        };
+        await AsyncStorage.mergeItem('UserData', JSON.stringify(user));
         Alert.alert('Successful!', 'Your data has been updated');
+        console.log(name);
       } catch (error) {
         console.log('====================================');
         console.log(error);
@@ -37,8 +43,9 @@ export default function Home({navigation}) {
   };
   const removeData = async () => {
     try {
-      await AsyncStorage.removeItem('UserName');
+      await AsyncStorage.clear();
       navigation.navigate('Login');
+      console.log(name);
     } catch (error) {
       console.log('====================================');
       console.log(error);
@@ -48,6 +55,7 @@ export default function Home({navigation}) {
   return (
     <View style={styles.body}>
       <Text style={styles.text}>Welcome {name}</Text>
+      <Text style={styles.text}>Your age {age}</Text>
       <TextInput
         style={styles.input}
         placeholder="Enter you data"
@@ -70,6 +78,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 40,
     fontWeight: 'bold',
+    color: 'blue',
   },
   input: {
     width: 300,
