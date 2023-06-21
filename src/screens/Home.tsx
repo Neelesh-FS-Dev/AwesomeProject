@@ -43,7 +43,7 @@ export default function Home({navigation}) {
   };
   const removeData = async () => {
     try {
-      await AsyncStorage.clear();
+      await AsyncStorage.removeItem();
       navigation.navigate('Login');
       console.log(name);
     } catch (error) {

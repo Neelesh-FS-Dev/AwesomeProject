@@ -18,6 +18,7 @@
     "@react-navigation/native-stack": "^6.9.12",
     "@react-navigation/stack": "^6.3.16",
     "@reduxjs/toolkit": "^1.9.5",
+    "axios": "^1.4.0",
     "link": "^1.5.1",
     "react": "18.2.0",
     "react-native": "^0.71.8",
@@ -30,6 +31,9 @@
     "react-native-tab-view": "^3.5.1",
     "react-native-vector-icons": "^9.2.0",
     "react-native-vision-camera": "^2.15.4",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
     "svg": "^0.1.0"
   },
   "devDependencies": {

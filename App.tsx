@@ -116,30 +116,60 @@
 
 // export default App;
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Login from './src/screens/Login';
-import Home from './src/screens/Home';
+// import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import Login from './src/screens/Login';
+// import Home from './src/screens/Home';
+// import {Provider} from 'react-redux';
+// import {Store} from './redux/counterReducer';
 
-import {NavigationContainer} from '@react-navigation/native';
-import 'react-native-gesture-handler';
+// import {NavigationContainer} from '@react-navigation/native';
+// import 'react-native-gesture-handler';
 
-const Stack = createNativeStackNavigator();
+// const Stack = createNativeStackNavigator();
 
-export default function MyStack() {
+// export default function MyStack() {
+//   return (
+//     <Provider store={Store} children={undefined}>
+//       <NavigationContainer>
+//         <Stack.Navigator initialRouteName="Login">
+//           <Stack.Screen
+//             name="Login"
+//             component={Login}
+//             options={{headerShown: false}}
+//           />
+//           <Stack.Screen
+//             name="Home"
+//             component={Home}
+//             options={{headerShown: false}}
+//           />
+//         </Stack.Navigator>
+//       </NavigationContainer>
+//     </Provider>
+//   );
+// }
+
+// import React from 'react';
+// import {Provider} from 'react-redux';
+// import store from './redux/store';
+// import MyComponent from './src/screens/MyComponent';
+// const App = () => {
+//   return (
+//     <Provider store={store}>
+//       <MyComponent />
+//     </Provider>
+//   );
+// };
+// export default App;
+import React from 'react';
+import {View} from 'react-native';
+import WeatherComponent from './src/screens/weather';
+
+const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View>
+      <WeatherComponent />
+    </View>
   );
-}
+};
+
+export default App;

@@ -9,6 +9,8 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useSelector, useDispatch} from 'react-redux';
+import {setName, setAge} from '../../redux/Counter/counterAction';
 export default function Login({navigation}) {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
